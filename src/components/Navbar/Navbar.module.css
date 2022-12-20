@@ -1,13 +1,25 @@
-.nav{
+.nav {
     grid-area: n;
     background-color: chocolate;
     padding: 20px;
 }
-.item{
+
+.item {
     color: white;
     text-decoration: none;
 }
-.active{
-    color:gold;
+
+.active {
+    color: gold;
     text-decoration: none;
+}
+
+.friends {
+    float: left;
+    width: 33%;
+}
+
+.friends img {
+    border-radius: 50%;
+    width: 75px;
 }

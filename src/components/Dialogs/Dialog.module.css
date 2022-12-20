@@ -9,6 +9,10 @@
     padding: 10px;
     text-decoration: none;
 }
+.dialogsItems img{
+    width: 50px;
+    border-radius: 50%;
+}
 
 .dialogsItems .active {
     color: gold;
