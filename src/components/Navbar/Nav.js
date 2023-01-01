@@ -10,6 +10,9 @@ const Nav = (props) => {
                 <NavLink to='/profile' className={navAct => navAct.isActive ? s.active : s.item}>Profile</NavLink>
             </div>
             <div>
+                <NavLink to='/users' className={navAct => navAct.isActive ? s.active : s.item}>Users</NavLink>
+            </div>
+            <div>
                 <NavLink to='/dialogs' className={navData => navData.isActive ? s.active : s.item}>Massages</NavLink>
             </div>
             <div>
