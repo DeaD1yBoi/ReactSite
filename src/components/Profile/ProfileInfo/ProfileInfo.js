@@ -1,4 +1,5 @@
 import s from './ProfileInfo.module.css'
+import UserPng from "../../../UserPng/Sample_User_Icon.png";
 
 const ProfileInfo = (props) => {
     return (<div>
@@ -6,7 +7,7 @@ const ProfileInfo = (props) => {
             <img src="https://picsum.photos/id/137/1000/100" alt="lol"/>
         </div>
         <div>
-            <img src={props.profile.photos.large} alt="profpic"/>
+            <img src={props.profile.photos.large != null ? props.profile.photos.large : UserPng} alt="profpic"/>
             {`FullName ${props.profile.fullName}`}
         </div>
         <div>
