@@ -29,27 +29,16 @@ let Users = (props) => {
                         </NavLink>
                     </div>
                     <div>
-                        {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id)
-                                followActions.unfollow(u.id)
-                                .then(data => {
-                                    props.toggleFollowingProgress(false, u.id)
-                                    if(data.resultCode === 0) {
-                                        props.unfollow(u.id);
-                                    }
-                                })
+                        {u.followed
+                            ? <button disabled={props.followingInProgress
+                                .some(id => id === u.id)}
+                                      onClick={() => {props.unfollow(u.id)
 
                             }}>UnFollow</button>
 
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id)
-                                followActions.follow(u.id)
-                                .then(data => {
-                                    props.toggleFollowingProgress(false, u.id)
-                                    if(data.resultCode === 0) {
-                                        props.follow(u.id);
-                                    }
-                                })
+                            : <button disabled={props.followingInProgress
+                                .some(id => id === u.id)}
+                                      onClick={() => {props.follow(u.id)
                             }}>Follow</button>}
                     </div>
                 </span>

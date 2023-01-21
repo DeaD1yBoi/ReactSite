@@ -38,3 +38,10 @@ export const headerAPI = {
             })
     }
 }
+export const profileAPI = {
+    getProfile(userID) {
+        return instance.get(`profile/${userID}`).then(response => {
+            return (response.data)
+        })
+    }
+}
