@@ -4,7 +4,7 @@ import Friend from "./Friends/Friend";
 
 const Nav = (props) => {
     let friendsElements = props.dialogs.map(friend => <Friend name={friend.name} image={friend.image} key={friend.id}/>)
-        return(
+    return (
         <nav className={s.nav}>
             <div>
                 <NavLink to='/profile' className={navAct => navAct.isActive ? s.active : s.item}>Profile</NavLink>
@@ -31,7 +31,7 @@ const Nav = (props) => {
                 </div>
             </div>
         </nav>
-        );
-        }
+    );
+}
 
-        export default Nav;
+export default Nav;

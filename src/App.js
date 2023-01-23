@@ -12,22 +12,22 @@ import Login from "./components/Login/Login";
 
 const App = (props) => {
     return (
-            <div className="app-wrapper">
-                <HeaderContainer/>
-                <NavContainer />
-                <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path="/profile/:userID" element={<ProfileContainer/>}/>
-                        <Route path="/profile" element={<ProfileContainer/>}/>
-                        <Route path='/dialogs' element={<DialogsContainer />}/>
-                        <Route path='/news' element={<News/>}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
-                        <Route path='/music' element={<Music/>}/>
-                        <Route path='/settings' element={<Settings/>}/>
-                        <Route path='/login' element={<Login/>}/>
-                    </Routes>
-                </div>
+        <div className="app-wrapper">
+            <HeaderContainer/>
+            <NavContainer/>
+            <div className='app-wrapper-content'>
+                <Routes>
+                    <Route path="/profile/:userID" element={<ProfileContainer/>}/>
+                    <Route path="/profile" element={<ProfileContainer/>}/>
+                    <Route path='/dialogs' element={<DialogsContainer/>}/>
+                    <Route path='/news' element={<News/>}/>
+                    <Route path='/users' element={<UsersContainer/>}/>
+                    <Route path='/music' element={<Music/>}/>
+                    <Route path='/settings' element={<Settings/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                </Routes>
             </div>
+        </div>
     );
 }
 

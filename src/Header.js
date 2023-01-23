@@ -1,5 +1,5 @@
 const Header = () => {
-    return(<div>
+    return (<div>
         <a href="">Home</a>
         <a href="">News Feed</a>
         <a href="">Massages</a>

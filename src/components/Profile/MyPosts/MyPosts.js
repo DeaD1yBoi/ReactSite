@@ -3,8 +3,6 @@ import Posts from "./Post/Posts";
 import React from "react";
 
 
-
-
 const MyPosts = (props) => {
     let posts = props.posts
         .map(post => <Posts message={post.message} likesCount={post.likesCount}/>);

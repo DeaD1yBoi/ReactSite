@@ -31,7 +31,7 @@ export const followActions = {
 }
 
 export const headerAPI = {
-    authMe(){
+    authMe() {
         return instance.get('auth/me')
             .then(response => {
                 return response.data

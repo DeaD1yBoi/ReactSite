@@ -3,7 +3,6 @@ import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
 
-
 let store = {
     _state: {
         profilePage: {
@@ -13,12 +12,12 @@ let store = {
         },
 
         dialogsPage: {
-            messages: [{id: 1,messages: 'Hello'},
-                {id: 2,messages: 'How are u?'},
-                {id: 3,messages: 'Want some Skittles'},
-                {id: 4,messages: 'Bruuh'},
-                {id: 5,messages: 'Ahhh'},
-                {id: 6,messages: 'Ohhh'}],
+            messages: [{id: 1, messages: 'Hello'},
+                {id: 2, messages: 'How are u?'},
+                {id: 3, messages: 'Want some Skittles'},
+                {id: 4, messages: 'Bruuh'},
+                {id: 5, messages: 'Ahhh'},
+                {id: 6, messages: 'Ohhh'}],
             dialogs: [{id: 1, name: "Akakiy", image: 'https://picsum.photos/id/29/100/100'},
                 {id: 2, name: "Jorge", image: 'https://picsum.photos/id/21/100/100'},
                 {id: 3, name: "Mikola", image: 'https://picsum.photos/id/163/100/100'},
@@ -65,7 +64,6 @@ let store = {
         this._callSubscriber(this._state);
     }
 }
-
 
 
 // export default store

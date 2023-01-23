@@ -2,12 +2,12 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
 let initialState = {
-    messages: [{id: 1,messages: 'Hello'},
-        {id: 2,messages: 'How are u?'},
-        {id: 3,messages: 'Want some Skittles'},
-        {id: 4,messages: 'Bruuh'},
-        {id: 5,messages: 'Ahhh'},
-        {id: 6,messages: 'Ohhh'}],
+    messages: [{id: 1, messages: 'Hello'},
+        {id: 2, messages: 'How are u?'},
+        {id: 3, messages: 'Want some Skittles'},
+        {id: 4, messages: 'Bruuh'},
+        {id: 5, messages: 'Ahhh'},
+        {id: 6, messages: 'Ohhh'}],
     dialogs: [{id: 1, name: "Akakiy", image: 'https://picsum.photos/id/29/100/100'},
         {id: 2, name: "Jorge", image: 'https://picsum.photos/id/21/100/100'},
         {id: 3, name: "Mikola", image: 'https://picsum.photos/id/163/100/100'},
@@ -26,7 +26,7 @@ const dialogsReducer = (state = initialState, action) => {
         case UPDATE_NEW_MESSAGE_TEXT :
             return {
                 ...state,
-                newMessageText : action.newText
+                newMessageText: action.newText
             }
         case ADD_MESSAGE :
             return {

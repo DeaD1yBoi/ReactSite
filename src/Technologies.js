@@ -1,5 +1,5 @@
 const Technologies = () => {
-    return(<div>
+    return (<div>
         <ul>
             <li>hello</li>
             <li>my</li>
