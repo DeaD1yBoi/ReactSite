@@ -1,5 +1,6 @@
 import s from './ProfileInfo.module.css'
 import UserPng from "../../../UserPng/Sample_User_Icon.png";
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
     return (<div>
@@ -8,6 +9,7 @@ const ProfileInfo = (props) => {
         </div>
         <div>
             <img src={props.profile.photos.large != null ? props.profile.photos.large : UserPng} alt="profpic"/>
+            <ProfileStatus status={'Hello'}/>
             {`FullName ${props.profile.fullName}`}
         </div>
         <div>
