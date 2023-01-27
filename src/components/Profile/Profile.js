@@ -1,4 +1,3 @@
-import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../../Common/Preloader/Preloader";
@@ -11,7 +10,7 @@ const Profile = (props) => {
 
     return (<div>
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer/>
         </div>
     </div>);
