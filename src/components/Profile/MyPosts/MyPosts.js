@@ -1,35 +1,41 @@
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
 import React from "react";
+import {Field, Form, Formik} from "formik";
 
 
-const MyPosts = (props) => {
-    let posts = props.posts
-        .map(post => <Posts message={post.message} likesCount={post.likesCount}/>);
-    let newPostElement = React.createRef();
-    let onAddPost = () => {
-        props.addPost()
+class MyPosts extends React.Component {
+    render() {
+        return (<div>
+                <h3>New post</h3>
+                <AddPostForm addPost={this.props.addPost}/>
+                <div className={s.posts}>
+                    {this.props.posts
+                        .map(post => <Posts message={post.message} likesCount={post.likesCount}/>)}
+                </div>
+            </div>);
     }
-    const onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    }
-    return (<div>
-        <h3>New post</h3>
-        <div className={s.post}>
-            <textarea onChange={onPostChange}
-                      ref={newPostElement}
-                      placeholder='Enter your post'
-                      value={props.newPostText} cols="30" rows="3"/>
-        </div>
-        <div>
-            <button onClick={onAddPost}>Add post</button>
-            <button>Remove post</button>
-        </div>
-        <div className={s.posts}>
-            {posts}
-        </div>
-    </div>);
 }
 
+const AddPostForm = (props) => {
+    return (<Formik
+        initialValues={{
+            newPostText: "",
+        }}
+        onSubmit={(values, {resetForm}) => {
+            props.addPost(values.newPostText);
+            resetForm();
+        }}>
+        <Form>
+            <div>
+                <Field
+                    name="newPostText"
+                    as='textarea'
+                    placeholder="Enter your post"
+                />
+            </div>
+            <button type={"submit"}>Send</button>
+        </Form>
+    </Formik>);
+};
 export default MyPosts;

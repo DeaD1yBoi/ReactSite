@@ -1,18 +1,12 @@
 import React from 'react'
 import {Field, Form, Formik} from "formik";
 
-const Login = (props) => (
+export const LoginForm = (props) => (
     <div>
-        <h1>Login</h1>
         <Formik
-            initialValues={{
-                login: '',
-                password: '',
-                rememberMe: '',
-            }}
+            initialValues={{login: '', password: '', rememberMe: '',}}
             onSubmit={(values) => {
                 alert(JSON.stringify(values, null, 2));
-                debugger
             }}
         >
             <Form>
@@ -36,5 +30,11 @@ const Login = (props) => (
     </div>
 );
 
+const Login = (props) => {
+    return <div>
+        <h1>LOGIN</h1>
+        <LoginForm/>
+    </div>
+}
 
 export default Login;
