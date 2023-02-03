@@ -3,7 +3,9 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import React from "react";
 import {Navigate} from "react-router-dom";
-import { Formik, Field, Form } from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import {Textarea} from "../../Common/FormControls/FormsControls";
+import {MessagesValidationSchema} from "../../Common/utils/validators/messagesValidator";
 
 class Dialogs extends React.Component {
     render() {
@@ -16,7 +18,7 @@ class Dialogs extends React.Component {
                 <div className={s.messages}>
                     {this.props.dialogsPage.messages
                         .map(message => <Message message={message.messages} key={message.id}/>)}
-                    <AddMessageForm addMessage={this.props.addMessage}/>
+                    <MessagesForm addMessage={this.props.addMessage}/>
                 </div>
             </div>
         )
@@ -24,22 +26,18 @@ class Dialogs extends React.Component {
 }
 
 
-const AddMessageForm = (props) => {
+const MessagesForm = (props) => {
     return (
         <Formik
-            initialValues={{
-                newMessageText: "",
-            }}
+            initialValues={{newMessageText: ""}}
+            validationSchema={MessagesValidationSchema}
             onSubmit={(values,{resetForm}) =>
             {props.addMessage(values.newMessageText);
             resetForm();
             }}>
             <Form>
-                    <Field
-                        name='newMessageText'
-                        as='textarea'
-                        placeholder='Enter your message'
-                    />
+                    <Field name='newMessageText' as={Textarea} placeholder='Enter your message' />
+                <ErrorMessage name={'newMessageText'} component={'div'} className={s.requiredField}/>
                 <button type="submit">Send</button>
             </Form>
         </Formik>

@@ -1,7 +1,9 @@
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
 import React from "react";
-import {Field, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {MyPostValidationSchema} from '../../../Common/utils/validators/myPostValidator';
+
 
 
 class MyPosts extends React.Component {
@@ -19,20 +21,16 @@ class MyPosts extends React.Component {
 
 const AddPostForm = (props) => {
     return (<Formik
-        initialValues={{
-            newPostText: "",
-        }}
+        initialValues={{newPostText: ""}}
+        validationSchema={MyPostValidationSchema}
         onSubmit={(values, {resetForm}) => {
             props.addPost(values.newPostText);
             resetForm();
         }}>
         <Form>
             <div>
-                <Field
-                    name="newPostText"
-                    as='textarea'
-                    placeholder="Enter your post"
-                />
+                <Field name="newPostText" as='textarea' placeholder="Enter your post" />
+                <ErrorMessage className={s.requiredField} name={'newPostText'} component={'div'}/>
             </div>
             <button type={"submit"}>Send</button>
         </Form>

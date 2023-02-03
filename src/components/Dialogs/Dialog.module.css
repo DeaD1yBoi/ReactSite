@@ -31,3 +31,8 @@ s.messages {
 s.message {
 
 }
+
+.requiredField {
+    color: red;
+    font-weight: bold;
+}

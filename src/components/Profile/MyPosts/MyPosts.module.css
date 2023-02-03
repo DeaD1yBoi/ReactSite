@@ -5,3 +5,8 @@
 .posts {
     margin-top: 10px;
 }
+
+.requiredField {
+    color: red;
+    font-weight: bold;
+}
