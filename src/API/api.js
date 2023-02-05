@@ -33,9 +33,13 @@ export const followActions = {
 export const headerAPI = {
     authMe() {
         return instance.get('auth/me')
-            .then(response => {
-                return response.data
-            })
+            .then(response => response.data)
+    },
+    logInAPI(email, password, rememberMe = false) {
+        return instance.post('auth/login', {email, password, rememberMe});
+    },
+    logOutAPI() {
+        return instance.delete('auth/login');
     }
 }
 export const profileAPI = {
@@ -51,3 +55,4 @@ export const profileAPI = {
         return instance.put(`profile/status`,{status: status});
     }
 }
+

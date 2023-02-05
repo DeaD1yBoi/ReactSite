@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 export const LoginValidationSchema = Yup.object().shape({
-    login: Yup.string()
+    email: Yup.string()
         .min(3, 'Too short!')
         .max(20, 'Too long!')
         .required('Required'),
