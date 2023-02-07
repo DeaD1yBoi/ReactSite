@@ -30,16 +30,22 @@ export const followActions = {
     }
 }
 
-export const headerAPI = {
+export const authAPI = {
     authMe() {
         return instance.get('auth/me')
             .then(response => response.data)
     },
-    logInAPI(email, password, rememberMe = false) {
-        return instance.post('auth/login', {email, password, rememberMe});
+    logInAPI(email, password, rememberMe = false, captcha) {
+        return instance.post('auth/login', {email, password, rememberMe, captcha})
+            .then(response => response.data);
     },
     logOutAPI() {
-        return instance.delete('auth/login');
+        return instance.delete('auth/login')
+            .then(response => response.data);
+    },
+    getCaptcha() {
+        return instance.get('security/get-captcha-url')
+            .then(response => response.data);
     }
 }
 export const profileAPI = {
@@ -49,10 +55,12 @@ export const profileAPI = {
         })
     },
     getStatus(userID) {
-        return instance.get(`profile/status/${userID}`);
+        return instance.get(`profile/status/${userID}`)
+            .then(response => response.data);
     },
     updateStatus(status) {
-        return instance.put(`profile/status`,{status: status});
-    }
+        return instance.put(`profile/status`, {status: status})
+            .then(response => response.data);
+    },
 }
 

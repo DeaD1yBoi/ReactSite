@@ -7,6 +7,6 @@ export const LoginValidationSchema = Yup.object().shape({
     password: Yup.string()
         .min(5, 'Too short!')
         .max(20, 'Too long!')
-        .required('Required')
+        .required('Required'),
 })
 
