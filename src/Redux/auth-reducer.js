@@ -51,7 +51,7 @@ export const getCaptcha = (captcha) => ({
     captcha
 })
 export const auth = () => (dispatch) => {
-    authAPI.authMe()
+    return authAPI.authMe()
         .then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
