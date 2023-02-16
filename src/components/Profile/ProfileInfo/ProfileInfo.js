@@ -1,6 +1,7 @@
 import s from './ProfileInfo.module.css'
 import UserPng from "../../../UserPng/Sample_User_Icon.png";
 import ProfileStatus from './ProfileStatus'
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     return (<div>
@@ -9,7 +10,7 @@ const ProfileInfo = (props) => {
         </div>
         <div>
             <img src={props.profile.photos.large != null ? props.profile.photos.large : UserPng} alt="profpic"/>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             {`FullName ${props.profile.fullName}`}
         </div>
         <div>

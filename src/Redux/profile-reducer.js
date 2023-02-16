@@ -14,7 +14,6 @@ let initialState = {
     status: ''
 }
 const profileReducer = (state = initialState, action) => {
-    let stateCopy = {...state}
     switch (action.type) {
         case ADD_POST :
             let newPost = {
@@ -52,14 +51,14 @@ export const getProfile = (userID) => (dispatch) => {
 
 }
 export const getStatus = (userID) => (dispatch) => {
-    profileAPI.getStatus(userID).then(response => {
-        dispatch(setStatus(response.data));
+    profileAPI.getStatus(userID).then(data => {
+        dispatch(setStatus(data));
     })
 }
 
 export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 0) {
+    profileAPI.updateStatus(status).then(data => {
+        if (data.resultCode === 0) {
             dispatch(setStatus(status));
         }
     })
