@@ -4,21 +4,6 @@ import React from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {MyPostValidationSchema} from '../../../Common/utils/validators/myPostValidator';
 
-
-
-class MyPosts extends React.Component {
-    render() {
-        return (<div>
-                <h3>New post</h3>
-                <AddPostForm addPost={this.props.addPost}/>
-                <div className={s.posts}>
-                    {this.props.posts
-                        .map(post => <Posts message={post.message} likesCount={post.likesCount}/>)}
-                </div>
-            </div>);
-    }
-}
-
 const AddPostForm = (props) => {
     return (<Formik
         initialValues={{newPostText: ""}}
@@ -36,4 +21,17 @@ const AddPostForm = (props) => {
         </Form>
     </Formik>);
 };
+
+const MyPosts = React.memo(props => {
+    return (<div>
+        <h3>New post</h3>
+        <AddPostForm addPost={props.addPost}/>
+        <div className={s.posts}>
+            {props.posts
+                .map(post => <Posts message={post.message} likesCount={post.likesCount}/>)}
+        </div>
+    </div>);
+});
+
+
 export default MyPosts;
