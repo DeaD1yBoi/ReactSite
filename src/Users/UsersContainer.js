@@ -17,10 +17,12 @@ import {
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
+        const {currentPage, pageSize} = this.props
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) => {
+        const {pageSize} = this.props
         this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
