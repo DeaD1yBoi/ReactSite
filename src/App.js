@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useLocation, useNavigate, useParams} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -10,10 +10,25 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import React from 'react'
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./Common/Preloader/Preloader";
+import {compose} from "redux";
+import store from "./Redux/redux-store";
 
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (<Component
+            {...props}
+            router={{location, navigate, params}}
+        />);
+    }
+
+    return ComponentWithRouterProp;
+}
 
 class App extends React.Component {
     componentDidMount() {
@@ -48,4 +63,19 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized,
 })
-export default connect(mapStateToProps, {initializeApp})(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
+
+const MainApp = (props) => {
+    return <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <div role={'main'} ></div>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
+}
+
+export default MainApp;
+
+

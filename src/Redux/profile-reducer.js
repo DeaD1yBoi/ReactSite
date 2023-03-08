@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = "SET-USER-PROFILE"
 const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING"
 const SET_STATUS = "SET-STATUS"
+const DELETE_POST = "DELETE-POST"
 
 let initialState = {
     posts: [{id: 1, message: "Hi, my name is KillReal, i'm street photographer", likesCount: '621'}, {
@@ -24,6 +25,8 @@ const profileReducer = (state = initialState, action) => {
 
         case SET_USER_PROFILE:
             return {...state, profile: action.profile}
+        case DELETE_POST:
+            return {...state, posts: state.posts.filter(p => p.id !== action.postID)}
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
         case SET_STATUS: {
@@ -38,6 +41,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (postText) => ({type: ADD_POST, postText: postText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
+export  const deletePost = (postID) => ({type:DELETE_POST, postID})
 
 export const getProfile = (userID) => async (dispatch) => {
     let data = await profileAPI.getProfile(userID)
