@@ -10,7 +10,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS'
 
 let initialState = {
-    users: [], pageSize: 4, totalUsersCount: 0, currentPage: 1, isFetching: false, followingInProgress: []
+    users: [], pageSize: 8, totalUsersCount: 0, currentPage: 1, isFetching: false, followingInProgress: []
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
