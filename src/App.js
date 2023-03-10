@@ -3,18 +3,21 @@ import {BrowserRouter, Route, Routes, useLocation, useNavigate, useParams} from 
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavContainer from "./components/Navbar/NavContainer";
 import UsersContainer from "./Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import React from 'react'
+import React, {Suspense} from 'react'
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./Common/Preloader/Preloader";
 import {compose} from "redux";
 import store from "./Redux/redux-store";
+
+// import ProfileContainer from "./components/Profile/ProfileContainer";
+// import DialogsContainer from "./components/Dialogs/DialogsContainer";
+const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"));
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -44,6 +47,7 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <NavContainer/>
                 <div className='app-wrapper-content'>
+                    <Suspense fallback={<div><Preloader /></div>}>
                     <Routes>
                         <Route path="/profile/:userID" element={<ProfileContainer/>}/>
                         <Route path="/profile" element={<ProfileContainer/>}/>
@@ -54,6 +58,7 @@ class App extends React.Component {
                         <Route path='/settings' element={<Settings/>}/>
                         <Route path='/login' element={<Login/>}/>
                     </Routes>
+                    </Suspense>
                 </div>
             </div>
         );
