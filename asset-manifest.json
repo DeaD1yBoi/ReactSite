@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactSite/static/css/main.e0616b26.css",
-    "main.js": "/ReactSite/static/js/main.2335030d.js",
+    "main.js": "/ReactSite/static/js/main.99d58a86.js",
     "static/css/446.112a1dda.chunk.css": "/ReactSite/static/css/446.112a1dda.chunk.css",
     "static/js/446.706f6d18.chunk.js": "/ReactSite/static/js/446.706f6d18.chunk.js",
     "static/css/551.a797562a.chunk.css": "/ReactSite/static/css/551.a797562a.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/lg.ring-loading-gif.gif": "/ReactSite/static/media/lg.ring-loading-gif.c3af073a4e74aa75e3ec.gif",
     "index.html": "/ReactSite/index.html",
     "main.e0616b26.css.map": "/ReactSite/static/css/main.e0616b26.css.map",
-    "main.2335030d.js.map": "/ReactSite/static/js/main.2335030d.js.map",
+    "main.99d58a86.js.map": "/ReactSite/static/js/main.99d58a86.js.map",
     "446.112a1dda.chunk.css.map": "/ReactSite/static/css/446.112a1dda.chunk.css.map",
     "446.706f6d18.chunk.js.map": "/ReactSite/static/js/446.706f6d18.chunk.js.map",
     "551.a797562a.chunk.css.map": "/ReactSite/static/css/551.a797562a.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.e0616b26.css",
-    "static/js/main.2335030d.js"
+    "static/js/main.99d58a86.js"
   ]
 }
