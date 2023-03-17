@@ -13,9 +13,6 @@ import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./Common/Preloader/Preloader";
 import {compose} from "redux";
 import store from "./Redux/redux-store";
-
-// import ProfileContainer from "./components/Profile/ProfileContainer";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"));
 
@@ -72,7 +69,7 @@ let AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp})
 
 const MainApp = (props) => {
     return <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <div role={'main'} ></div>
                 <AppContainer/>

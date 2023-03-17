@@ -4,12 +4,21 @@ import ProfileStatus from './ProfileStatus'
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+
+    const mainPhotoSelected = (e) => {
+        debugger
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0])
+        }
+    }
+
     return (<div>
         <div>
             <img src="https://picsum.photos/id/137/1000/100" alt="lol"/>
         </div>
         <div>
             <img src={props.profile.photos.large != null ? props.profile.photos.large : UserPng} alt="profpic"/>
+            {props.isOwner && <input type="file" onChange={mainPhotoSelected}/>}
             <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             {`FullName ${props.profile.fullName}`}
         </div>
