@@ -54,6 +54,10 @@ export const profileAPI = {
             return (response.data)
         })
     },
+    updateContacts (profile) {
+        return instance.put(`profile`, profile)
+            .then(response => response.data)
+    },
     savePhoto(photoFile) {
         const formData = new FormData();
         formData.append('image', photoFile)

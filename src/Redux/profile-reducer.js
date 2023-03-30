@@ -6,13 +6,14 @@ const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING"
 const SET_STATUS = "SET-STATUS"
 const DELETE_POST = "DELETE-POST"
 const SAVE_PHOTO_SUCCESS = "SAVE-PHOTO-SUCCESS"
+const EDIT_CONTACTS = "EDIT-CONTACTS"
 
 let initialState = {
     posts: [{id: 1, message: "Hi, my name is KillReal, i'm street photographer", likesCount: '621'}, {
         id: 2,
         message: "Would you mind if i take some pictures",
         likesCount: '512'
-    }], profile: null, isFetching: false, newPostText: "", status: ''
+    }], profile: null, isFetching: false, newPostText: "", status: '', contacts: null
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -36,6 +37,8 @@ const profileReducer = (state = initialState, action) => {
 
         case SET_STATUS:
             return {...state, status: action.status}
+        case EDIT_CONTACTS:
+            return {...state, contacts: action.contacts}
         default :
             return state;
     }
@@ -45,6 +48,7 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export  const deletePost = (postID) => ({type:DELETE_POST, postID})
 export  const savePhotoSuccess = (photos) => ({type:SAVE_PHOTO_SUCCESS, photos})
+export const editContacts = (contacts) => ({type: EDIT_CONTACTS, contacts})
 
 export const getProfile = (userID) => async (dispatch) => {
     let data = await profileAPI.getProfile(userID)
@@ -66,6 +70,13 @@ export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
+
+export const updateContacts = (contacts) => async (dispatch) => {
+    let data = await profileAPI.updateContacts(contacts)
+    if (data.resultCode === 0) {
+        dispatch(editContacts(data.contacts))
     }
 }
 
