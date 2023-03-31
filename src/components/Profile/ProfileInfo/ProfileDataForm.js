@@ -3,7 +3,6 @@ import React from "react";
 
 
 const ProfileDataForm = (props) => {
-    debugger
     return(
         <div>
             <Formik
@@ -23,7 +22,7 @@ const ProfileDataForm = (props) => {
                 onSubmit={async (values, {setSubmitting} ) => {
                     await props.updateContacts(values)
                     setSubmitting(false);
-                    props.onclose()
+                    props.onClose()
                 }}>
                 {({isSubmitting}) => (
                     <Form>

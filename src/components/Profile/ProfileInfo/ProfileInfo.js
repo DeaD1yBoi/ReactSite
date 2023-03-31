@@ -3,6 +3,7 @@ import UserPng from "../../../UserPng/Sample_User_Icon.png";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import {useState} from "react";
 import ProfileDataForm from "./ProfileDataForm";
+import ProfileContacts from "../ProfileContact";
 
 const ProfileInfo = ({savePhoto, profile, status, updateStatus, isOwner, updateContacts}) => {
 
@@ -24,13 +25,11 @@ const ProfileInfo = ({savePhoto, profile, status, updateStatus, isOwner, updateC
             {isOwner && <input type="file" onChange={mainPhotoSelected}/>}
             <div><b>Status</b> :<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/></div>
         </div>
-        {editMode ? <ProfileDataForm profile={profile} updateContacts={updateContacts}/> : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={()=>{setEditMode(true)}}/>}
+        {editMode ? <ProfileDataForm profile={profile} updateContacts={updateContacts} onClose={()=>{setEditMode(false)}}/> : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={()=>{setEditMode(true)}}/>}
     </div>);
 }
 
-const Contact = ({contactTitle, contactValue}) => {
-    return <div className={s.contact}><b>{contactTitle}</b>:{contactValue}</div>
-}
+
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return <div>
             {isOwner && <div><button onClick={goToEditMode}>Edit</button></div>}
@@ -39,15 +38,15 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
                 <b>About Me</b>: {profile.aboutMe}
             </div>
             <div>
-                <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-                return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+                return <ProfileContacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
             })}
             </div>
 
             <div className={s.description}>
-                Ищу работу: {profile.lookingForAJob ? "Ищу" : "Не ищу"}
+                <b>Ищу работу:</b> {profile.lookingForAJob ? "Yes" : "No"}
                 {profile.lookingForAJob ?
-                    <div>Какую работу: {profile.lookingForAJobDescription} </div> : null}
+                    <div><b>My skills: </b>{profile.lookingForAJobDescription} </div> : null}
 
             </div>
         </div>

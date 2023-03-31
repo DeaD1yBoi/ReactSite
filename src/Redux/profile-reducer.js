@@ -73,10 +73,12 @@ export const savePhoto = (file) => async (dispatch) => {
     }
 }
 
-export const updateContacts = (contacts) => async (dispatch) => {
+export const updateContacts = (contacts) => async (dispatch, getState) => {
+    const userId = getState().auth.userId
     let data = await profileAPI.updateContacts(contacts)
     if (data.resultCode === 0) {
         dispatch(editContacts(data.contacts))
+        dispatch(getProfile(userId))
     }
 }
 

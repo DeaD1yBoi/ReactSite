@@ -1,10 +1,11 @@
 import React from "react";
+import s from "./ProfileInfo/ProfileInfo.module.css";
 
-const ProfileContacts = ({objectKey, objectValue}) => {
-    if(!objectValue) return null
+const ProfileContacts = ({contactTitle, contactValue}) => {
+    if(!contactValue) return null
     return (
-        <div>
-            <b>{objectKey}:</b> {objectValue}
+        <div className={s.contact}>
+            <b>{contactTitle}: </b> {contactValue}
         </div>
     )
 }
