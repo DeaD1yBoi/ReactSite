@@ -44,7 +44,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
             </div>
 
             <div className={s.description}>
-                <b>Ищу работу:</b> {profile.lookingForAJob ? "Yes" : "No"}
+                <b>Looking for a job:</b> {profile.lookingForAJob ? "Yes" : "No"}
                 {profile.lookingForAJob ?
                     <div><b>My skills: </b>{profile.lookingForAJobDescription} </div> : null}
 
