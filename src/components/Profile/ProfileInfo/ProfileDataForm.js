@@ -45,28 +45,44 @@ const ProfileDataForm = (props) => {
                         </div>
                         <div>
                             <b>Facebook :</b><Field type={'input'} name={'contacts.facebook'}/>
+                            {errors.contacts?.facebook && touched.contacts?.facebook ? (
+                                <div className={s.requiredErrors}>{errors.contacts.facebook}</div>) : null}
                         </div>
 
                         <div>
                             <b>Website :</b><Field type={'input'} name={'contacts.website'}/>
+                            {errors.contacts?.website && touched.contacts?.website ? (
+                                <div className={s.requiredErrors}>{errors.contacts.website}</div>) : null}
                         </div>
                         <div>
                             <b>Vk :</b><Field type={'input'} name={'contacts.vk'}/>
+                            {errors.contacts?.vk && touched.contacts?.vk ? (
+                                <div className={s.requiredErrors}>{errors.contacts.vk}</div>) : null}
                         </div>
                         <div>
                             <b>Twitter :</b><Field type={'input'} name={'contacts.twitter'}/>
+                            {errors.contacts?.twitter && touched.contacts?.twitter ? (
+                                <div className={s.requiredErrors}>{errors.contacts.twitter}</div>) : null}
                         </div>
                         <div>
                             <b>Instagram :</b><Field type={'input'} name={'contacts.instagram'}/>
+                            {errors.contacts?.instagram && touched.contacts?.instagram ? (
+                                <div className={s.requiredErrors}>{errors.contacts.instagram}</div>) : null}
                         </div>
                         <div>
                             <b>Youtube :</b><Field type={'input'} name={'contacts.youtube'}/>
+                            {errors.contacts?.youtube && touched.contacts?.youtube ? (
+                                <div className={s.requiredErrors}>{errors.contacts.youtube}</div>) : null}
                         </div>
                         <div>
                             <b>GitHub :</b><Field type={'input'} name={'contacts.github'}/>
+                            {errors.contacts?.github && touched.contacts?.github ? (
+                                <div className={s.requiredErrors}>{errors.contacts.github}</div>) : null}
                         </div>
                         <div>
                             <b>MainLink :</b><Field type={'input'} name={'contacts.mainLink'}/>
+                            {errors.contacts?.mainLink && touched.contacts?.mainLink ? (
+                                <div className={s.requiredErrors}>{errors.contacts.mainLink}</div>) : null}
                         </div>
                         <div>
                             <b>Looking For A Job :</b><Field type={'checkbox'} name={'lookingForAJob'}/>
@@ -76,7 +92,9 @@ const ProfileDataForm = (props) => {
                             {errors.lookingForAJobDescription && touched.lookingForAJobDescription ? (
                                 <div className={s.requiredErrors}>{errors.lookingForAJobDescription}</div>) : null}
                         </div>
-
+                        <div className={s.errorMessage}>
+                            {props.error && props.errorMessage}
+                        </div>
                         <button type="submit" disabled={isSubmitting}>
                             Submit
                         </button>

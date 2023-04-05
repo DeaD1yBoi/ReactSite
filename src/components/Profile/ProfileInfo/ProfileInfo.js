@@ -5,7 +5,7 @@ import {useState} from "react";
 import ProfileDataForm from "./ProfileDataForm";
 import ProfileContacts from "../ProfileContact";
 
-const ProfileInfo = ({savePhoto, profile, status, updateStatus, isOwner, updateContacts}) => {
+const ProfileInfo = ({savePhoto, profile, status, updateStatus, isOwner, updateContacts, error, errorMessage}) => {
 
     let [editMode, setEditMode] = useState(false)
 
@@ -25,12 +25,12 @@ const ProfileInfo = ({savePhoto, profile, status, updateStatus, isOwner, updateC
             {isOwner && <input type="file" onChange={mainPhotoSelected}/>}
             <div><b>Status</b> :<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/></div>
         </div>
-        {editMode ? <ProfileDataForm profile={profile} updateContacts={updateContacts} onClose={()=>{setEditMode(false)}}/> : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={()=>{setEditMode(true)}}/>}
+        {editMode ? <ProfileDataForm error={error} errorMessage={errorMessage} profile={profile} updateContacts={updateContacts} onClose={()=>{setEditMode(false)}}/> : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={()=>{setEditMode(true)}}/>}
     </div>);
 }
 
 
-const ProfileData = ({profile, isOwner, goToEditMode}) => {
+const ProfileData = ({profile, isOwner, goToEditMode, error, errorMessage}) => {
     return <div>
             {isOwner && <div><button onClick={goToEditMode}>Edit</button></div>}
             <div><b>FullName</b>: {profile.fullName}</div>

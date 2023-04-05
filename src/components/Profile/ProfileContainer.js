@@ -48,7 +48,7 @@ class ProfileContainer extends React.Component {
         return <>
             <Profile {...this.props} profile={this.props.profile} status={this.props.status}
                      updateStatus={this.props.updateStatus} isOwner={!this.props.router.params.userID} savePhoto={this.props.savePhoto}
-            updateContacts={this.props.updateContacts}/>
+            updateContacts={this.props.updateContacts} error={this.props.error} errorMessage={this.props.errorMessage}/>
         </>
     }
 }
@@ -56,7 +56,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    error: state.profilePage.error,
+    errorMessage: state.profilePage.errorMessage
 })
 
 export default compose(withAuthRedirect, withRouter, connect(mapStateToProps, {
