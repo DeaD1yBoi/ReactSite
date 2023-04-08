@@ -28,7 +28,7 @@ const MyPosts = React.memo(props => {
         <AddPostForm addPost={props.addPost}/>
         <div className={s.posts}>
             {props.posts
-                .map(post => <Posts message={post.message} likesCount={post.likesCount}/>)}
+                .map(post => <Posts key={post.id} message={post.message} likesCount={post.likesCount}/>)}
         </div>
     </div>);
 });

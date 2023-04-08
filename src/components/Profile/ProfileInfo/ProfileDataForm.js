@@ -1,7 +1,7 @@
 import {Field, Form, Formik} from "formik";
 import React from "react";
 import {ProfileDataValidationSchema} from "../../../Common/utils/validators/ProfileDataValidator";
-import s from "../../Login/Login.module.css";
+import s from "./ProfileInfo.module.css";
 
 
 
